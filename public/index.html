@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flights</title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <style media="screen">
+
+            html,
+            body {
+            height: 100%;
+            /* The html and body elements cannot have any padding or margin. */
+            }
+
+            /* Wrapper for page content to push down footer */
+            #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            /* Negative indent footer by its height */
+            margin: 0 auto -60px;
+            /* Pad bottom by footer height */
+            padding: 0 0 60px;
+            }
+
+            /* Set the fixed height of the footer here */
+            #footer {
+            height: 60px;
+            background-color: #f5f5f5;
+            }
+
+
+            /* Custom page CSS
+            -------------------------------------------------- */
+            /* Not required for template or sticky footer method. */
+
+            #wrap > .container {
+            padding: 60px 15px 0;
+            }
+            .container .credit {
+            margin: 20px 0;
+            }
+
+            #footer > .container {
+            padding-left: 15px;
+            padding-right: 15px;
+            }
+
+        </style>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+        <script type="text/javascript">
+        // $(function() {
+        //     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+        //   });
+        $(document).ready(function() {
+                  $(function() {
+                      $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+                            });
+        });
+        // $(document).ready(
+        // function() {
+        //     $('#datepicker').datepicker(
+        //         {
+        //             onClose: function(dateText, inst) {
+        //                     alert("My date is: " + dateText);
+        //                 }
+        //         }
+        //     );
+        //     $('#datepicker').css('clip', 'auto');
+        // }
+    // );
+        </script>
+    </head>
+    <body>
+
+      <div id="wrap">
+
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">FSI</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Begin page content -->
+        <div class="container">
+
+          <div class="page-header">
+            <form class="form-inline">
+              <div class="form-group col-lg-4">
+                <label for="From">From</label>
+                <input type="text" class="form-control" id="From" placeholder="City">
+              </div>
+              <div class="form-group col-lg-4">
+                <label for="To">To</label>
+                <input type="text" class="form-control" id="To" placeholder="City">
+              </div>
+              <div class="form-group col-lg-4">
+                <label for="datepicker">Date</label>
+                <input type="text" class="form-control" id="datepicker" placeholder="Date">
+              </div>
+              <div class="btn-group btn-group-justified" role="group" aria-label="...">
+               <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-primary" onclick="search()">Search</button>
+                </div>
+              </div>
+            </form>
+            <!-- <div class="row">
+
+              <div class="col-lg-4">
+
+                <div class="input-group">
+
+                  <label for="From">From</label>
+
+                  <input type="text" class="form-control" id="From" placeholder="City">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="input-group">
+                  <label for="To">To</label>
+                  <input type="text" class="form-control" id="To" placeholder="City">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="input-group">
+                  <label for="datepicker">Date</label>
+                <input type="text" class="form-control" id="datepicker" placeholder="Date">
+                </div>
+              </div>
+            </div> -->
+
+
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+              <div class="text-center">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation"><a href="#daym2" aria-controls="daym2" id="daym2l" role="tab" data-toggle="tab" class="">daym2</a>
+                      </li>
+                      <li role="presentation"><a href="#daym1" aria-controls="daym1" id="daym1l" role="tab" data-toggle="tab" class="" contenteditable="false">daym1</a>
+                      </li>
+                      <li role="presentation" class="active"><a href="#day" aria-controls="day" id="dayl" role="tab" data-toggle="tab" class="">day</a>
+                      </li>
+                      <li role="presentation"><a href="#dayp1" aria-controls="dayp1" id="dayp1l" role="tab" data-toggle="tab" class="">dayp1</a>
+                      </li>
+                      <li role="presentation"><a href="#dayp2" aria-controls="dayp2" id="dayp2l" role="tab" data-toggle="tab" class="">dayp2</a>
+                        </li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane" id="daym2">
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Airline</th>
+                                <th>Flight</th>
+                                <th>Departure airport</th>
+                                <th>at</th>
+                                <th>Arrival airport</th>
+                                <th>at</th>
+                                <th>Duration (min)</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody id="daym2t">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="daym1">
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Airline</th>
+                                <th>Flight</th>
+                                <th>Departure airport</th>
+                                <th>at</th>
+                                <th>Arrival airport</th>
+                                <th>at</th>
+                                <th>Duration (min)</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody id="daym1t">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane active" id="day">
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Airline</th>
+                                <th>Flight</th>
+                                <th>Departure airport</th>
+                                <th>at</th>
+                                <th>Arrival airport</th>
+                                <th>at</th>
+                                <th>Duration (min)</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody id="dayt">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="dayp1">
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Airline</th>
+                                <th>Flight</th>
+                                <th>Departure airport</th>
+                                <th>at</th>
+                                <th>Arrival airport</th>
+                                <th>at</th>
+                                <th>Duration (min)</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody id="dayp1t">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="dayp2">
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Airline</th>
+                                <th>Flight</th>
+                                <th>Departure airport</th>
+                                <th>at</th>
+                                <th>Arrival airport</th>
+                                <th>at</th>
+                                <th>Duration (min)</th>
+                                <th>Price</th>
+                              </tr>
+                            </thead>
+                            <tbody id="dayp2t">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="footer">
+        <div class="container">
+          <p class="text-muted credit">Example Flight API.</p>
+        </div>
+      </div>
+      <script src="js/client.js" charset="utf-8"></script>
+    </body>
+</html>

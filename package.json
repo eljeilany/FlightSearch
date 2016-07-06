@@ -1,0 +1,14 @@
+{
+  "name": "Flight",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "El Jeilany Sidi Mohamed",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "request": "^2.72.0"
+  }
+}

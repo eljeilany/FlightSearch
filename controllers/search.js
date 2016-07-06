@@ -57,12 +57,6 @@ module.exports = function (req,res,next) {
         }
     ], function(err) {
         if (err) return next(err);
-        // http://node.locomote.com/code-task/flight_search/QF?date=2016-09-02&from=SYD&to=JFK
-
-        // airlinesC = []
-        // fromC = []
-        // toC = []
-        // searchQ = []
         // console.log(airlinesC);
         // console.log(fromC);
         // console.log(toC);
